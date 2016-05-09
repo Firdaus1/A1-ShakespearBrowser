@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ tempPlay.full_title }}</title>
+</head>
+<body>
+<h1>{{ tempPlay.title }}</h1>
+{{ tempPlay.date }}
+<h3>Characters:</h3>
+
+<!-- here's a proper way of creating tables in HTML-->
+
+<table border="1">
+<thead>
+<tr>
+    <th></th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+{% for character in charactersArray %}
+<tr>
+    <td style="font-family: sans-serif"><a href="/characters/{{ character.value }}">{{ character.value }}</a> </td>
+    <td style="font-family: sans-serif">{{ character.key }}</td>
+</tr>
+    {% endfor %}
+</tbody>
+</table>
+
+
+<br style="font-family: sans-serif"> List of Acts:<br>
+
+<table border="1">
+<thead>
+<tr>
+    <th></th>
+    <th></th>
+</tr>
+</thead>
+<tbody>
+
+{% for act in tempPlay.acts %}
+    <tr><td style="font-family: sans-serif">Act # {{ loop.index }} </td>
+
+    {% set another = loop.index %}
+    <td>{% for scene in act.scenes %}
+     <a href="/play/{{ id }}/acts/{{ another }}/scene/{{ loop.index }} "> Scene# {{ loop.index }} </a> {% endfor %}</td>
+
+    </tr>{% endfor %}
+
+</tbody>
+</table>
+<!-- note that each th matches up with a td to create one column. td- data, tr - row that's all I have to know -->
+<br><br><br>
+
+<a style="font-family: sans-serif" href="/"> Go back to play list </a>
+<br><br><br>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Plays of Shakespeare</h1>
+<ul>
+{% for play in Allplays | sort(attribute = 'date') %}
+        <li><a style="font-family: sans-serif" href="/play/{{ play.id }} ">{{ play.title }} </a>({{ play.date }})</li>
+    {% endfor %}
+<br><br><br>
+</ul>
+</body>
+</html>

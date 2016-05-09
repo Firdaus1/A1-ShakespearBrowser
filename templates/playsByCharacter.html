@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for items in savedPlays | sort(attribute = 'date')  %}
+    {% if loop.index == 1 %}
+<h1>{{ items.characterName }}</h1>
+        <br>
+        {% endif %}
+    <a href="/play/{{ items.playID }}">{{ items.playName }} {{ items.date }} </a> <br>
+ {% endfor %}
+</body>
+</html>

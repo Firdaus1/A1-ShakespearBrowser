@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ tempPlay.title }}</h1>
+
+<h2 style="display: inline">Act#{{ numbers.actNum + 1}} Scene# {{ numbers.sceneNum + 1 }}</h2> Setting: {{ playTitle}}
+<br>
+{% for block in blocks  %}
+
+    <b>Speaker: <a href="/characters/{{ block.value }} "> {{ block.speaker }} </a> </b>
+
+        <blockquote style="font-family: sans-serif"><em> {{ block.lines | replace("[", "") | replace("]", "") }}</em></blockquote>
+
+    {% endfor %}
+<br>
+
+
+{% if previous != -1 %}
+ <a href="/play/{{ id }}/acts/{{ numbers.actNum + 1 }}/scene/{{ previous + 1  }} "> Act # {{ numbers.actNum + 1 }} Scene# {{ previous + 1 }} </a>
+    <
+{% endif %}
+------------
+{% if next != -1 %}
+    >
+ <a href="/play/{{ id }}/acts/{{ numbers.actNum + 1 }}/scene/{{ next + 1 }} "> Act # {{ numbers.actNum + 1}} Scene# {{ next + 1 }} </a>
+{% endif %}
+<br><br><br>
+<a href="/play/{{ id }}">Back to play's page</a>
+<br><br><br>
+</body>
+</html>
